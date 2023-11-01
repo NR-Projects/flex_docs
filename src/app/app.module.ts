@@ -9,7 +9,7 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getAnalytics, provideAnalytics, ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
-
+import { environment } from 'src/environments/environment';
 
 @NgModule({
 	declarations: [
@@ -19,7 +19,7 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 		BrowserModule,
 		AppRoutingModule,
 		BrowserAnimationsModule,
-		provideFirebaseApp(() => initializeApp()),
+		provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
 		provideAuth(() => getAuth()),
 		provideAnalytics(() => getAnalytics()),
 		provideFirestore(() => getFirestore()),
