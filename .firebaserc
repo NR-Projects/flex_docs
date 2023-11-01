@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "flex-docs-c1875": {
+      "hosting": {
+        "flex_docs": [
+          "flex-docs-c1875"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "flex-docs-c1875"
+  }
+}

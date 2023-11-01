@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "flex_docs",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}
