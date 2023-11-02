@@ -23,6 +23,7 @@
     "@angular/router": "^16.2.0",
     "@katoid/angular-grid-layout": "^2.2.0",
     "ngx-doc-viewer": "^15.0.1",
+    "ngx-typed-js": "^2.1.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"

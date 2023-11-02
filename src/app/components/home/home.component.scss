@@ -1,0 +1,56 @@
+:host {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(to right, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+}
+
+.title {
+    margin: 20px;
+    font-size: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    hr {
+        width: 120%;
+        opacity: 0.4;
+        border: none;
+        outline: 1px solid rgb(0, 72, 145);
+    }
+}
+
+.typing {
+    font-size: 2rem;
+}
+
+.google-auth-button {
+    margin-top: 40vh;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    outline-width: 1px;
+    outline-style: solid;
+    padding: 15px 20px;
+    transition: all 0.5s ease-in-out;
+    background-color: #e1e1e100;
+    outline-color: #000000;
+    outline-offset: 0px;
+    box-shadow: 0 0 20px hsla(148, 74%, 59%, 0);
+
+    svg {
+        margin-right: 15px;
+    }
+
+    &:hover {
+        transition: all 0.5s ease-in-out;
+        background-color: #00bf72;
+        outline-color: #00000000;
+        outline-offset: 20px;
+        box-shadow: 0 0 20px hsl(148, 74%, 59%);
+        cursor: pointer;
+    }
+}
