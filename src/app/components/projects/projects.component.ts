@@ -30,4 +30,8 @@ export class ProjectsComponent implements OnInit {
 		await this.authService.logout();
 		this.router.navigate(['home']);
 	}
+
+	onNewProject(): void {
+		//
+	}
 }

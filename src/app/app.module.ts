@@ -17,12 +17,14 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 import { NgxTypedJsModule } from 'ngx-typed-js';
 import { HomeComponent } from './components/home/home.component';
 import { ProjectsComponent } from './components/projects/projects.component';
+import { ProjectItemComponent } from './components/projects/project-item/project-item.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		HomeComponent,
-		ProjectsComponent
+		ProjectsComponent,
+		ProjectItemComponent
 	],
 	imports: [
 		BrowserModule,
