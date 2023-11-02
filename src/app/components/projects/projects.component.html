@@ -4,15 +4,13 @@
         <span>{{ userName }}</span>
     </div>
     <div (click)="logOut()">
-        <p>Logout</p>
+        <span>Logout</span>
     </div>
 </div>
 <div class="content">
     <button (click)="onNewProject()">New Project</button>
 
     <div class="project-list">
-        <project-item></project-item>
-        <project-item></project-item>
-        <project-item></project-item>
+        <project-item *ngFor="let project of projectList"></project-item>
     </div>
 </div>
