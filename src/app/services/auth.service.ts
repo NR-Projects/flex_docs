@@ -16,7 +16,8 @@ export class AuthService {
 		await signOut(this.firebaseAuth);
 	}
 
-	getUserIfExists(): [boolean, User | null] {
+	async getUserIfExists(): Promise<[boolean, User | null]> {
+		await this.firebaseAuth.authStateReady()
 		return [
 			this.firebaseAuth.currentUser !== null,
 			this.firebaseAuth.currentUser

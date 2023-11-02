@@ -1,1 +1,10 @@
-<p>projects works!</p>
+<div class="top-bar">
+    <div>
+        <img [src]="userImage" alt="" referrerpolicy="no-referrer">
+        <span>{{ userName }}</span>
+    </div>
+    <div (click)="logOut()">
+        <p>Logout</p>
+    </div>
+</div>
+<div class="content"></div>

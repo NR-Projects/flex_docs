@@ -15,15 +15,11 @@ export class AppComponent implements OnInit {
 		private router: Router) {
 	}
 
-	ngOnInit(): void {
-		setTimeout(() => {
-			const [isLoggedIn, _] = this.authService.getUserIfExists();
+	async ngOnInit(): Promise<void> {
+		const [isLoggedIn, _] = await this.authService.getUserIfExists();
 
-			console.log(this.authService.getUserIfExists());
-
-			if (isLoggedIn) {
-				this.router.navigate(['projects']);
-			}
-		}, 1000);
+		if (isLoggedIn) {
+			this.router.navigate(['projects']);
+		}
 	}
 }
