@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -11,6 +12,7 @@ export class ProjectsComponent implements OnInit {
 	userImage: any;
 
 	constructor(
+		private router: Router,
 		private authService: AuthService
 	) {}
 
@@ -26,5 +28,6 @@ export class ProjectsComponent implements OnInit {
 
 	async logOut(): Promise<void> {
 		await this.authService.logout();
+		this.router.navigate(['home']);
 	}
 }
