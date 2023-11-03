@@ -11,6 +11,8 @@
     <button (click)="onNewProject()">New Project</button>
 
     <div class="project-list">
-        <project-item *ngFor="let project of projectList" [projectItem]="project"></project-item>
+        <project-item
+            *ngFor="let project of projectList"
+            [projectItem]="project"></project-item>
     </div>
 </div>

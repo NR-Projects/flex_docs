@@ -27,6 +27,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { ProjectItemComponent } from './components/projects/project-item/project-item.component';
 import { ProjectPopupModifyComponent } from './components/projects/project-popup-modify/project-popup-modify.component';
+import { ProjectViewComponent } from './components/project-view/project-view.component';
 
 @NgModule({
 	declarations: [
@@ -34,7 +35,8 @@ import { ProjectPopupModifyComponent } from './components/projects/project-popup
 		HomeComponent,
 		ProjectsComponent,
 		ProjectItemComponent,
-		ProjectPopupModifyComponent
+		ProjectPopupModifyComponent,
+  ProjectViewComponent
 	],
 	imports: [
 		BrowserModule,

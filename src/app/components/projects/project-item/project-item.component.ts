@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Project } from 'src/app/models/project.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProjectPopupModifyComponent } from '../project-popup-modify/project-popup-modify.component';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'project-item',
@@ -17,6 +18,7 @@ export class ProjectItemComponent implements OnInit {
 
 	constructor(
 		public dialog: MatDialog,
+		private router: Router,
 		private authService: AuthService
 	) { }
 
@@ -32,7 +34,7 @@ export class ProjectItemComponent implements OnInit {
 		}
 	}
 
-	onProjectEditInvoked() {
+	onProjectEditInvoked(): void {
 		this.dialog.open(ProjectPopupModifyComponent, {
 			disableClose: true,
 			data: {
@@ -42,7 +44,7 @@ export class ProjectItemComponent implements OnInit {
 		});
 	}
 
-	onProjectDeleteInvoked() {
+	onProjectDeleteInvoked(): void {
 		this.dialog.open(ProjectPopupModifyComponent, {
 			disableClose: true,
 			data: {
@@ -50,5 +52,9 @@ export class ProjectItemComponent implements OnInit {
 				projectData: this.projectItem
 			},
 		});
+	}
+
+	onProjectView(): void {
+		this.router.navigate([`project/${this.projectItem.id}`]);
 	}
 }
