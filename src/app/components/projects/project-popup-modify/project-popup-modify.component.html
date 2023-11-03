@@ -1,10 +1,10 @@
 <h1 mat-dialog-title>{{ popupTitle }}</h1>
 <div></div>
 <mat-dialog-content class="mat-typography dialog-content">
-    <form [formGroup]="projectInfoFormGroup">
+    <form [formGroup]="projectInfoFormGroup" readonly>
         <mat-form-field appearance="outline">
             <mat-label>First Name</mat-label>
-            <input matInput placeholder="Project Name" formControlName="ProjectName" required [disabled]="!popupFormEnabled">
+            <input matInput placeholder="Project Name" formControlName="ProjectName" required [readonly]="!popupFormEnabled">
         </mat-form-field>
     </form>
 </mat-dialog-content>

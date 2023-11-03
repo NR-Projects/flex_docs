@@ -8,8 +8,8 @@ export class Project {
     // Project Owner
     owner_id?: string;
 
-    // Project Creation Date
-    dateCreated?: Date;
+    // Sharing Access
+    shared_access?: Record<string, "READ-ONLY" | "READ-WRITE">
 
     // Boards
     board?: Array<Board>;

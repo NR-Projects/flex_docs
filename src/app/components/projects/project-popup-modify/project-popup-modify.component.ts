@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Project } from 'src/app/models/project.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
@@ -25,6 +26,7 @@ export class ProjectPopupModifyComponent implements OnInit {
 		@Inject(MAT_DIALOG_DATA) public data: any,
 		public dialogRef: MatDialogRef<ProjectPopupModifyComponent>,
 		private formBuilder: FormBuilder,
+		private authService: AuthService,
 		private projectService: ProjectService
 	) {
 		this.popupType = data.type;
@@ -59,7 +61,7 @@ export class ProjectPopupModifyComponent implements OnInit {
 		}
 	}
 
-	onProjectActionInvoked(): void {
+	async onProjectActionInvoked(): Promise<void> {
 
 		if (!this.projectInfoFormGroup.valid) {
 			return;
@@ -71,9 +73,14 @@ export class ProjectPopupModifyComponent implements OnInit {
 					// Get All Info From Form Group
 					const ProjectName = this.projectInfoFormGroup.get("ProjectName")?.value as string;
 
+					// Cancel if cannot fetch id !== null
+					const user_id = await this.authService.getUserId();
+					if (user_id === '') return;
+
 					// Create New Project Object
 					let newProject: Project = {
-						name: ProjectName
+						name: ProjectName,
+						owner_id: user_id
 					}
 
 					// Push to Firestore

@@ -1,4 +1,6 @@
 :host {
+    cursor: pointer;
+
     width: 90%;
     height: 60px;
     background-color: #a0a1a3;
@@ -7,6 +9,10 @@
     justify-content: space-between;
     margin: 5px;
     border-radius: 10px;
+
+    &:hover {
+        text-decoration: underline;
+    }
 
     &>span {
         margin-left: 30px;
@@ -24,10 +30,18 @@
 
             &:nth-child(1) {
                 fill: #1f3356;
+
+                &:hover {
+                    fill: #5b85ce;
+                }
             }
 
             &:nth-child(2) {
-                fill: #f93939;
+                fill: #ba2424;
+
+                &:hover {
+                    fill: #fc4d4d;
+                }
             }
         }
     }
