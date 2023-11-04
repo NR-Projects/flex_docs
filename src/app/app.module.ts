@@ -13,7 +13,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 
-
 // Firebase
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
@@ -23,6 +22,8 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 
 // External
 import { NgxTypedJsModule } from 'ngx-typed-js';
+import { KtdGridModule } from '@katoid/angular-grid-layout';
+
 import { HomeComponent } from './components/home/home.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { ProjectItemComponent } from './components/projects/project-item/project-item.component';
@@ -58,7 +59,8 @@ import { ProjectViewComponent } from './components/project-view/project-view.com
 		provideStorage(() => getStorage()),
 
 		// External
-		NgxTypedJsModule
+		NgxTypedJsModule,
+		KtdGridModule
 	],
 	providers: [
 		ScreenTrackingService,

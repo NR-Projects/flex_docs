@@ -38,7 +38,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
 		this.userImage = user?.photoURL;
 		
 		// Fetch All projects
-		this.projectListSub = this.projectService.getAllProjects().subscribe({
+		this.projectListSub = this.projectService.getAllProjects(user!.uid).subscribe({
 			next: (value: Array<Project>) => this.projectList = value,
 			error: (err: any) => console.error(err)
 		})

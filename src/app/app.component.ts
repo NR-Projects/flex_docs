@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
 	async ngOnInit(): Promise<void> {
 		const [isLoggedIn, _] = await this.authService.getUserIfExists();
 
-		if (isLoggedIn) {
+		if (isLoggedIn && this.router.url === '/home') {
 			this.router.navigate(['projects']);
 		}
 	}

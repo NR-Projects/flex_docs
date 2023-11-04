@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Firestore, addDoc, collection, collectionData, deleteDoc, doc, updateDoc } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, deleteDoc, doc, docData, query, updateDoc, where } from '@angular/fire/firestore';
 import { Project } from '../models/project.model';
-import { Observable, lastValueFrom, map } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root'
@@ -10,15 +10,24 @@ export class ProjectService {
 
 	constructor(private firestore: Firestore) { }
 
+	// Project
 	async addProject(project: Project): Promise<void> {
 		let projectCollection = collection(this.firestore, "projects");
 		addDoc(projectCollection, project);
 	}
 
-	getAllProjects(): Observable<Array<Project>> {
+	getAllProjects(user_id: string): Observable<Array<Project>> {
 		let projectCollection = collection(this.firestore, "projects");
-		return collectionData(projectCollection, { idField: 'id'}).pipe(map((response) => {
+		let filterByOwnerId = query(projectCollection, where("owner_id", "==", user_id));
+		return collectionData(filterByOwnerId, { idField: 'id' }).pipe(map((response) => {
 			return response as Array<Project>;
+		}));
+	}
+
+	getProject(id: string): Observable<Project> {
+		let docRef = doc(this.firestore, "projects", id);
+		return docData(docRef, { idField: 'id' }).pipe(map((response) => {
+			return response as Project;
 		}));
 	}
 
@@ -32,4 +41,6 @@ export class ProjectService {
 		let docRef = doc(this.firestore, "projects", project.id!);
 		await deleteDoc(docRef);
 	}
+
+	// Board
 }
