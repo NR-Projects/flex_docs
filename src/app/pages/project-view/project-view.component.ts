@@ -45,6 +45,8 @@ export class ProjectViewComponent implements OnInit, OnDestroy {
 		}).unsubscribe();
 
 		// Get Project Board (From Id + Project Id)
+
+		this.onCreateBoardEvent();
 	}
 
 	ngOnDestroy(): void {

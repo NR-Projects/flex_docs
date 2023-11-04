@@ -1,5 +1,23 @@
 <!-- Top Bar -->
-<div></div>
+<div class="board-top">
+    <!-- Name -->
+    <span>Board Name</span>
+
+    <!-- Options -->
+    <mat-icon [matMenuTriggerFor]="menu" class="action-icon">more_vert</mat-icon>
+    <mat-menu #menu="matMenu">
+        <div mat-menu-item (click)="onBoardEdit()">
+            <mat-icon>edit</mat-icon>
+            <span>Edit Board</span>
+        </div>
+        <div mat-menu-item (click)="onBoardDelete()">
+            <mat-icon>delete</mat-icon>
+            <span>Delete Board</span>
+        </div>
+    </mat-menu>
+</div>
 
 <!-- Board Content -->
-<div></div>
+<div class="board-content">
+    <embed class="content-frame" />
+</div>

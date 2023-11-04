@@ -10,10 +10,9 @@ export class ProjectService {
 
 	constructor(private firestore: Firestore) { }
 
-	// Project
 	async addProject(project: Project): Promise<void> {
 		let projectCollection = collection(this.firestore, "projects");
-		addDoc(projectCollection, project);
+		await addDoc(projectCollection, project);
 	}
 
 	getAllProjects(user_id: string): Observable<Array<Project>> {
@@ -41,6 +40,4 @@ export class ProjectService {
 		let docRef = doc(this.firestore, "projects", project.id!);
 		await deleteDoc(docRef);
 	}
-
-	// Board
 }

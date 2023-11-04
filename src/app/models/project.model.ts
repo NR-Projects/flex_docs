@@ -20,19 +20,19 @@ export class Board {
     name: string;
 
     // Board Type
-    boardType?: BoardType;
+    boardType: BoardType;
+
+    // Board Content
+    boardContent: any;
 
     // Board Position
     pos: Vec2;
 
     // Board Size
     size: Vec2;
-
+    
     // Board Min Size
     min_size: Vec2;
-
-    // Board Content
-    boardContent: any;
 
 
     constructor(id: string, name: string, boardType: BoardType) {
@@ -42,7 +42,7 @@ export class Board {
         
         // Default Values
         this.min_size = { x: 2, y: 2 };
-        this.size = { x: 2, y: 2 };
+        this.size = { x: 9, y: 16 };
         this.pos = { x: 0, y: 0 };
     }
 }

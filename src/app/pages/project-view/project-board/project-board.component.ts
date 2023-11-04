@@ -14,4 +14,8 @@ export class ProjectBoardComponent implements OnInit {
 	ngOnInit(): void {
 		// Display Item
 	}
+
+	onBoardEdit(): void {}
+
+	onBoardDelete(): void {}
 }

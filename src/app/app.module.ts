@@ -12,6 +12,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+
+
 
 // Firebase
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
@@ -52,6 +56,8 @@ import { ProjectBoardComponent } from './pages/project-view/project-board/projec
 		MatDialogModule,
 		MatFormFieldModule,
 		MatInputModule,
+		MatMenuModule,
+		MatIconModule,
 
 		// Firebase
 		provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
