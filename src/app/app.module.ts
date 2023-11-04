@@ -14,8 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
-
-
+import { MatSelectModule } from '@angular/material/select';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 // Firebase
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
@@ -34,6 +34,7 @@ import { ProjectItemComponent } from './pages/projects/project-item/project-item
 import { ProjectPopupModifyComponent } from './pages/projects/project-popup-modify/project-popup-modify.component';
 import { ProjectViewComponent } from './pages/project-view/project-view.component';
 import { ProjectBoardComponent } from './pages/project-view/project-board/project-board.component';
+import { ProjectBoardPopupActionComponent } from './pages/project-view/project-board-popup-action/project-board-popup-action.component';
 
 @NgModule({
 	declarations: [
@@ -43,7 +44,8 @@ import { ProjectBoardComponent } from './pages/project-view/project-board/projec
 		ProjectItemComponent,
 		ProjectPopupModifyComponent,
 		ProjectViewComponent,
-		ProjectBoardComponent
+		ProjectBoardComponent,
+		ProjectBoardPopupActionComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -58,6 +60,8 @@ import { ProjectBoardComponent } from './pages/project-view/project-board/projec
 		MatInputModule,
 		MatMenuModule,
 		MatIconModule,
+		MatSelectModule,
+		MatTooltipModule,
 
 		// Firebase
 		provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),

@@ -17,7 +17,7 @@ export class ProjectItemComponent implements OnInit {
 	itemTag?: string;
 
 	constructor(
-		public dialog: MatDialog,
+		private dialog: MatDialog,
 		private router: Router,
 		private authService: AuthService
 	) { }

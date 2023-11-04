@@ -20,7 +20,7 @@ export class Board {
     name: string;
 
     // Board Type
-    boardType: BoardType;
+    boardType: string;
 
     // Board Content
     boardContent: any;
@@ -34,22 +34,21 @@ export class Board {
     // Board Min Size
     min_size: Vec2;
 
+    // REMOVABLE
+    _is_pos_changed?: boolean;
 
-    constructor(id: string, name: string, boardType: BoardType) {
-        this.id = id;
+    constructor(name: string, boardType: string, boardContent: string) {
+        this.id = '';
         this.name = name;
         this.boardType = boardType;
+        this.boardContent = boardContent;
+        this._is_pos_changed = false;
         
         // Default Values
         this.min_size = { x: 2, y: 2 };
         this.size = { x: 9, y: 16 };
         this.pos = { x: 0, y: 0 };
     }
-}
-
-export enum BoardType {
-    STATIC,
-    LINKED
 }
 
 export interface Vec2 {

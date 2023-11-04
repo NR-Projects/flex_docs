@@ -1,0 +1,10 @@
+.dialog-content {
+    margin-top: 12px;
+    margin-bottom: 7.5px;
+
+    &>form {
+        &>mat-form-field {
+            display: block;
+        }
+    }
+}

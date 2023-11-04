@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, addDoc, collection, collectionData, deleteDoc, doc, query, updateDoc, where } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, deleteDoc, doc, updateDoc } from '@angular/fire/firestore';
 import { Board } from '../models/project.model';
 import { Observable, map } from 'rxjs';
 
@@ -12,10 +12,11 @@ export class BoardService {
 
 	async addProjectBoard(projectId: string, board: Board): Promise<void> {
 		let projectBoardCollection = collection(this.firestore, "projects", projectId, "boards");
-		await addDoc(projectBoardCollection, board);
+		delete board._is_pos_changed;
+		await addDoc(projectBoardCollection, JSON.parse(JSON.stringify(board)));
 	}
 
-	getAllProjectBoards(user_id: string, projectId: string): Observable<Array<Board>> {
+	getAllProjectBoards(projectId: string): Observable<Array<Board>> {
 		let projectBoardCollection = collection(this.firestore, "projects", projectId, "boards");
 		return collectionData(projectBoardCollection, { idField: 'id' }).pipe(map((response) => {
 			return response as Array<Board>;
@@ -24,6 +25,7 @@ export class BoardService {
 
 	async updateProjectBoard(projectId: string, board: Board) {
 		let docRef = doc(this.firestore, "projects", projectId, "boards", board.id);
+		delete board._is_pos_changed;
 		await updateDoc(docRef, JSON.parse(JSON.stringify(board)));
 	}
 	async deleteProjectBoard(projectId: string, board: Board) {

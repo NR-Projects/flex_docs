@@ -23,8 +23,8 @@ export class ProjectPopupModifyComponent implements OnInit {
 
 
 	constructor(
-		@Inject(MAT_DIALOG_DATA) public data: any,
-		public dialogRef: MatDialogRef<ProjectPopupModifyComponent>,
+		@Inject(MAT_DIALOG_DATA) private data: any,
+		private dialogRef: MatDialogRef<ProjectPopupModifyComponent>,
 		private formBuilder: FormBuilder,
 		private authService: AuthService,
 		private projectService: ProjectService
@@ -84,7 +84,7 @@ export class ProjectPopupModifyComponent implements OnInit {
 					}
 
 					// Push to Firestore
-					this.projectService.addProject(newProject);
+					await this.projectService.addProject(newProject);
 				}
 				break;
 			case "Edit":
@@ -96,13 +96,13 @@ export class ProjectPopupModifyComponent implements OnInit {
 					this.popupData.name = ProjectName;
 
 					// Push to Firestore
-					this.projectService.updateProject(this.popupData);
+					await this.projectService.updateProject(this.popupData);
 				}
 				break;
 			case "Delete":
 				{
 					// Delete from Firestore
-					this.projectService.deleteProject(this.popupData);
+					await this.projectService.deleteProject(this.popupData);
 				}
 				break;
 		}

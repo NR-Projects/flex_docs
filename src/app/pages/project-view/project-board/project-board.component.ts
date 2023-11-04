@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Board } from 'src/app/models/project.model';
+import { ProjectBoardPopupActionComponent } from '../project-board-popup-action/project-board-popup-action.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
 	selector: 'project-board',
@@ -7,15 +9,35 @@ import { Board } from 'src/app/models/project.model';
 	styleUrls: ['./project-board.component.scss']
 })
 export class ProjectBoardComponent implements OnInit {
+	@Input({ required: true }) projectId!: string;
 	@Input({ required: true }) boardItem!: Board;
 
-	constructor () {}
+	constructor (
+		private dialog: MatDialog
+	) {}
 
 	ngOnInit(): void {
-		// Display Item
 	}
 
-	onBoardEdit(): void {}
+	onBoardEdit(): void {
+		this.dialog.open(ProjectBoardPopupActionComponent, {
+			disableClose: true,
+			data: {
+				type: "Edit",
+				projectId: this.projectId,
+				boardData: this.boardItem
+			},
+		});
+	}
 
-	onBoardDelete(): void {}
+	onBoardDelete(): void {
+		this.dialog.open(ProjectBoardPopupActionComponent, {
+			disableClose: true,
+			data: {
+				type: "Delete",
+				projectId: this.projectId,
+				boardData: this.boardItem
+			},
+		});
+	}
 }
