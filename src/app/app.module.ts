@@ -24,11 +24,12 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 import { NgxTypedJsModule } from 'ngx-typed-js';
 import { KtdGridModule } from '@katoid/angular-grid-layout';
 
-import { HomeComponent } from './components/home/home.component';
-import { ProjectsComponent } from './components/projects/projects.component';
-import { ProjectItemComponent } from './components/projects/project-item/project-item.component';
-import { ProjectPopupModifyComponent } from './components/projects/project-popup-modify/project-popup-modify.component';
-import { ProjectViewComponent } from './components/project-view/project-view.component';
+import { HomeComponent } from './pages/home/home.component';
+import { ProjectsComponent } from './pages/projects/projects.component';
+import { ProjectItemComponent } from './pages/projects/project-item/project-item.component';
+import { ProjectPopupModifyComponent } from './pages/projects/project-popup-modify/project-popup-modify.component';
+import { ProjectViewComponent } from './pages/project-view/project-view.component';
+import { ProjectBoardComponent } from './pages/project-view/project-board/project-board.component';
 
 @NgModule({
 	declarations: [
@@ -37,7 +38,8 @@ import { ProjectViewComponent } from './components/project-view/project-view.com
 		ProjectsComponent,
 		ProjectItemComponent,
 		ProjectPopupModifyComponent,
-  ProjectViewComponent
+		ProjectViewComponent,
+		ProjectBoardComponent
 	],
 	imports: [
 		BrowserModule,

@@ -20,9 +20,8 @@ export class ProjectViewComponent implements OnInit, OnDestroy {
 
 	// For Grid
 	cols: number = 50;
-	rowHeight: number = 20;
-	layout: KtdGridLayout = [
-	];
+	rowHeight: number | "fit" = 20;
+	layout: KtdGridLayout = [];
 	trackById = ktdTrackById;
 
 	constructor(
