@@ -18,6 +18,7 @@
 </div>
 
 <!-- Board Content -->
-<div class="board-content">
-    <embed class="content-frame" />
+<div class="board-content" [ngSwitch]="boardItem.boardType">
+    <textarea class="content-frame" *ngSwitchCase="'STATIC'" readonly> {{ boardItem.boardContent }} </textarea>
+    <iframe class="content-frame" [src]="sanitizer.bypassSecurityTrustResourceUrl(boardItem.boardContent)" *ngSwitchCase="'LINKED'" ></iframe>
 </div>

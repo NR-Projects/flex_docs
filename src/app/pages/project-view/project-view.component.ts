@@ -16,6 +16,7 @@ import { ProjectBoardPopupActionComponent } from './project-board-popup-action/p
 export class ProjectViewComponent implements OnInit, OnDestroy {
 
 	// Project and Board Info
+	projectTitle?: string;
 	projectData?: Project;
 	projectBoards: Array<Board>;
 	projectSub?: Subscription;
@@ -48,6 +49,7 @@ export class ProjectViewComponent implements OnInit, OnDestroy {
 		this.projectSub = this.projectService.getProject(projectId).subscribe({
 			next: (project: Project) => {
 				this.projectData = project;
+				this.projectTitle = this.projectData.name!;
 			},
 			error: (err: any) => console.error(err)
 		});
