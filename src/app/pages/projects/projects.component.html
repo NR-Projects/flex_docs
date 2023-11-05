@@ -4,11 +4,14 @@
         <span>{{ userName }}</span>
     </div>
     <div (click)="logOut()">
+        <mat-icon>logout</mat-icon>
         <span>Logout</span>
     </div>
 </div>
 <div class="content">
-    <button (click)="onNewProject()">New Project</button>
+    <div class="action-list">
+        <button (click)="onNewProject()">Create New Project</button>
+    </div>
 
     <div class="project-list">
         <project-item

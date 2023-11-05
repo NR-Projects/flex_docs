@@ -1,7 +1,8 @@
 :host {
     cursor: pointer;
     width: 90%;
-    height: 60px;
+    height: fit-content;
+    margin: 10px 0px;
 }
 
 .project-item-container {
@@ -13,27 +14,49 @@
     justify-content: space-between;
     margin: 5px;
     border-radius: 10px;
+    box-shadow: 0px 2px 10px 0.15px #00000069;
 
     &:hover {
-        text-decoration: underline;
+        color: #c4c4c4;
+        background-color: #454545;
     }
 
     &>span {
         margin-left: 30px;
-        font-size: 1.4rem;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: max(1.4rem, 17.5px);
         cursor: pointer;
+
+        display: flex;
+        align-items: center;
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        &>span {
+            color: #c4c4c4;
+            background-color: #33548d;
+            padding: 7.5px 10px;
+            margin-left: 15px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+        }
     }
 
     &>div {
+        display: flex;
+        align-items: center;
         margin-right: 30px;
         
         &>svg {
-            height: 25px;
+            height: 17.5px;
             cursor: pointer;
             margin: 0px 15px;
 
             &:nth-child(1) {
-                fill: #1f3356;
+                fill: #406098;
 
                 &:hover {
                     fill: #5b85ce;
