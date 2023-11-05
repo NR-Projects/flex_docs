@@ -37,16 +37,14 @@ import { ProjectBoardPopupActionComponent } from './pages/project-view/project-b
 
 
 const firebaseConfig = {
-	"projectId": "flex-docs-c1875",
-	"appId": "1:1084485850333:web:c3febdf7df021ec98df734",
-	"storageBucket": "flex-docs-c1875.appspot.com",
-	"apiKey": "AIzaSyCM7aiMCoC-tvPijku65Jz7avwlZRMBt9c",
-	"authDomain": "flex-docs-c1875.firebaseapp.com",
-	"messagingSenderId": "1084485850333",
-	"measurementId": "G-F7ZYCX83HS"
+	"projectId": "flex-docs-c6b8d",
+	"appId": "1:952002896749:web:dcdf177582e1a2739ef064",
+	"storageBucket": "flex-docs-c6b8d.appspot.com",
+	"apiKey": "AIzaSyAH-BxIcWXCUdjRM3gwXfD8mDA3b-9G7ug",
+	"authDomain": "flex-docs-c6b8d.firebaseapp.com",
+	"messagingSenderId": "952002896749",
+	"measurementId": "G-QEE7SPNKLM"
 };
-
-
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -81,7 +79,7 @@ const firebaseConfig = {
 
 		// External
 		NgxTypedJsModule,
-		KtdGridModule
+		KtdGridModule,
 	],
 	providers: [
 		ScreenTrackingService,
