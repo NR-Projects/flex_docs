@@ -1,9 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SecurityContext } from '@angular/core';
 import { Board } from 'src/app/models/project.model';
 import { ProjectBoardPopupActionComponent } from '../project-board-popup-action/project-board-popup-action.component';
 import { MatDialog } from '@angular/material/dialog';
 
-import { DomSanitizer } from "@angular/platform-browser";
+import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
 
 
 @Component({
@@ -23,7 +23,10 @@ export class ProjectBoardComponent implements OnInit {
 
 	ngOnInit(): void {
 		if (this.boardItem.boardType === "LINKED") {
-			this.content_or_link = this.sanitizer.bypassSecurityTrustUrl(this.boardItem.boardContent);
+			this.content_or_link = this.sanitizer.bypassSecurityTrustResourceUrl(this.boardItem.boardContent);
+		}
+		else {
+			this.content_or_link = this.boardItem.boardContent;
 		}
 	}
 
