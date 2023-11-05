@@ -9,6 +9,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    z-index: 5;
 
     background-color: #1a1a1a;
     box-shadow: 0px 0px 5px 4px #000000;
@@ -23,7 +24,7 @@
         z-index: 1;
         color: #efefef;
         fill: #efefef;
-        font-size: 1.5rem;
+        font-size: max(1.15rem, 15px);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -38,7 +39,7 @@
     }
 
     .project-title {
-        font-size: 2rem;
+        font-size: max(2rem, 20px);
         color: #e6e6e6;
     }
 }
@@ -53,7 +54,7 @@
         display: block;
         width: 100%;
 
-        $grid-size: 50px;
+        $grid-size: 49.73px;
         $grid-color: #62626271;
         background-size: $grid-size $grid-size;
         background-repeat: repeat;
@@ -69,31 +70,12 @@
     z-index: 2;
     bottom: 0;
     right: 0;
-    margin: 50px;
+    margin: max(1.5rem, 30px);
 
     display: flex;
     flex-direction: column;
 
-    &>.action-fab {
-        cursor: pointer;
-        padding: 20px;
-        border-radius: 50%;
-        font-size: 2.5rem;
-        color: #e1e1e1;
-        background-color: #5b43a3;
-        box-shadow: 0px 5px 9px 0.5px #382964;
-
-        $margin_size: 10px;
-        $e_var: 8px;
-        margin: $margin_size 0px;
-
-        &:hover {
-            background-color: #2f2255;
-        }
-
-        &:active {
-            margin-top: ($margin_size * 2)-$e_var;
-            margin-bottom: 0px + $e_var;
-        }
+    &>button {
+        margin-top: 10px;
     }
 }
