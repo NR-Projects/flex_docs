@@ -62,6 +62,11 @@
             linear-gradient(to right, $grid-color 0.12px, transparent 1px),
             linear-gradient(to bottom, $grid-color 0.12px, transparent 1px);
 
+        &>ktd-grid-item {
+            &:active {
+                cursor: grab;
+            }
+        }
     }
 }
 
