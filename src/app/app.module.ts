@@ -77,9 +77,7 @@ const firebaseConfig = {
 		// Firebase
 		provideFirebaseApp(() => initializeApp(firebaseConfig)),
 		provideAuth(() => getAuth()),
-		provideAnalytics(() => getAnalytics()),
 		provideFirestore(() => getFirestore()),
-		provideStorage(() => getStorage()),
 
 		// External
 		NgxTypedJsModule,
