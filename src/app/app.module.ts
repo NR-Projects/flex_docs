@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { environment } from 'src/environments/environment';
 
 // Angular Material
 import { MatButtonModule } from '@angular/material/button';
@@ -36,6 +35,18 @@ import { ProjectViewComponent } from './pages/project-view/project-view.componen
 import { ProjectBoardComponent } from './pages/project-view/project-board/project-board.component';
 import { ProjectBoardPopupActionComponent } from './pages/project-view/project-board-popup-action/project-board-popup-action.component';
 
+
+const firebaseConfig = {
+	"projectId": "flex-docs-c1875",
+	"appId": "1:1084485850333:web:c3febdf7df021ec98df734",
+	"storageBucket": "flex-docs-c1875.appspot.com",
+	"apiKey": "AIzaSyCM7aiMCoC-tvPijku65Jz7avwlZRMBt9c",
+	"authDomain": "flex-docs-c1875.firebaseapp.com",
+	"messagingSenderId": "1084485850333",
+	"measurementId": "G-F7ZYCX83HS"
+};
+
+
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -64,7 +75,7 @@ import { ProjectBoardPopupActionComponent } from './pages/project-view/project-b
 		MatTooltipModule,
 
 		// Firebase
-		provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+		provideFirebaseApp(() => initializeApp(firebaseConfig)),
 		provideAuth(() => getAuth()),
 		provideAnalytics(() => getAnalytics()),
 		provideFirestore(() => getFirestore()),
