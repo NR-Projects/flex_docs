@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Auth, GoogleAuthProvider, User, signInWithPopup, signOut } from '@angular/fire/auth';
+import { Auth, GoogleAuthProvider, User, signInWithPopup, signInWithRedirect, signOut } from '@angular/fire/auth';
 
 @Injectable({
 	providedIn: 'root'
@@ -9,7 +9,7 @@ export class AuthService {
 	constructor(private firebaseAuth: Auth) { }
 
 	async login(): Promise<void> {
-		await signInWithPopup(this.firebaseAuth, new GoogleAuthProvider());
+		await signInWithRedirect(this.firebaseAuth, new GoogleAuthProvider());
 	}
 
 	async logout(): Promise<void> {
