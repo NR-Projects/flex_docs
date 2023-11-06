@@ -34,6 +34,7 @@ import { ProjectViewComponent } from './pages/project-view/project-view.componen
 import { ProjectBoardComponent } from './pages/project-view/project-board/project-board.component';
 import { ProjectBoardPopupActionComponent } from './pages/project-view/project-board-popup-action/project-board-popup-action.component';
 import { ProjectPopupAccessComponent } from './pages/projects/project-popup-access/project-popup-access.component';
+import { ProjectEnterPopupComponent } from './pages/project-view/project-enter-popup/project-enter-popup.component';
 
 
 const firebaseConfig = {
@@ -56,6 +57,7 @@ const firebaseConfig = {
 		ProjectBoardComponent,
 		ProjectBoardPopupActionComponent,
 		ProjectPopupAccessComponent,
+  ProjectEnterPopupComponent,
 	],
 	imports: [
 		BrowserModule,

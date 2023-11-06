@@ -7,6 +7,8 @@ import { Board, Project } from 'src/app/models/project.model';
 import { BoardService } from 'src/app/services/board.service';
 import { ProjectService } from 'src/app/services/project.service';
 import { ProjectBoardPopupActionComponent } from './project-board-popup-action/project-board-popup-action.component';
+import { AuthService } from 'src/app/services/auth.service';
+import { ProjectEnterPopupComponent } from './project-enter-popup/project-enter-popup.component';
 
 @Component({
 	selector: 'app-project-view',
@@ -34,6 +36,7 @@ export class ProjectViewComponent implements OnInit, OnDestroy {
 		private activatedRoute: ActivatedRoute,
 		private router: Router,
 		private dialog: MatDialog,
+		private authService: AuthService,
 		private projectService: ProjectService,
 		private projectBoardService: BoardService
 	) {
@@ -41,7 +44,9 @@ export class ProjectViewComponent implements OnInit, OnDestroy {
 		this.projectBoards = [];
 	}
 
-	ngOnInit(): void {
+	async ngOnInit(): Promise<void> {
+		const user_id = await this.authService.getUserId();
+
 		// Get Id from Url
 		const projectId: string = this.activatedRoute.snapshot.paramMap.get('id')!;
 
@@ -50,8 +55,28 @@ export class ProjectViewComponent implements OnInit, OnDestroy {
 			next: (project: Project) => {
 				this.projectData = project;
 				this.projectTitle = this.projectData.name!;
+
+				// Show Dialog [Conditional]
+				if (this.projectData!.owner_id !== user_id) {
+					this.dialog.open(ProjectEnterPopupComponent, {
+						disableClose: true,
+						data: {
+							isAllowed: true,
+							accessType: this.projectData?.shared_access[user_id]
+						},
+					});
+				}
 			},
-			error: (err: any) => console.error(err)
+			error: (err: any) => {
+				console.error(err);
+				this.dialog.open(ProjectEnterPopupComponent, {
+					disableClose: true,
+					data: {
+						isAllowed: false
+					},
+				});
+				this.router.navigate(['projects']);
+			}
 		});
 
 		// Get Project Board (From Id + Project Id)
@@ -110,7 +135,7 @@ export class ProjectViewComponent implements OnInit, OnDestroy {
 			);
 
 			// Update Positions if changed
-			if(!isVecSame) {
+			if (!isVecSame) {
 				board._is_pos_changed = true;
 
 				board.pos.x = layoutItem.x;
