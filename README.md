@@ -1,7 +1,7 @@
 # FlexDocs
 [![Netlify Status](https://api.netlify.com/api/v1/badges/4c47203d-3ef8-4ec7-999f-dc110e1d63cf/deploy-status)](https://app.netlify.com/sites/flex-docs/deploys)
 
-Visit site on ✨ https://flex-docs.netlify.app/ ✨
+Visit site on ✨ https://ts-flex-docs.netlify.app/ ✨
 
 This is a website application for organizing multiple notes, docs, or any resources that can be accessed online into different frames.
 
