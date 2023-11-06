@@ -19,9 +19,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 // Firebase
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
-import { getAnalytics, provideAnalytics, ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
+import { ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
-import { getStorage, provideStorage } from '@angular/fire/storage';
 
 // External
 import { NgxTypedJsModule } from 'ngx-typed-js';
@@ -34,6 +33,7 @@ import { ProjectPopupModifyComponent } from './pages/projects/project-popup-modi
 import { ProjectViewComponent } from './pages/project-view/project-view.component';
 import { ProjectBoardComponent } from './pages/project-view/project-board/project-board.component';
 import { ProjectBoardPopupActionComponent } from './pages/project-view/project-board-popup-action/project-board-popup-action.component';
+import { ProjectPopupAccessComponent } from './pages/projects/project-popup-access/project-popup-access.component';
 
 
 const firebaseConfig = {
@@ -55,6 +55,7 @@ const firebaseConfig = {
 		ProjectViewComponent,
 		ProjectBoardComponent,
 		ProjectBoardPopupActionComponent,
+		ProjectPopupAccessComponent,
 	],
 	imports: [
 		BrowserModule,

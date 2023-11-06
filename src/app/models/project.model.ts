@@ -6,10 +6,12 @@ export class Project {
     name?: string;
 
     // Project Owner
-    owner_id?: string;
+    owner_id: string = '';
 
-    // Sharing Access
-    shared_access?: Record<string, "READ-ONLY" | "READ-WRITE">
+    // Sharing Access [uid -> access_type]
+    // * = Everyone
+    // <uid> = UID of specific user
+    shared_access: Record<string, string> = {}
 }
 
 export class Board {

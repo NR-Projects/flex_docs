@@ -1,0 +1,10 @@
+.accessFormItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0px;
+
+    &>* {
+        margin: 0px 5px;
+    }
+}

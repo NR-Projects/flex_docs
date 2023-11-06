@@ -80,7 +80,8 @@ export class ProjectPopupModifyComponent implements OnInit {
 					// Create New Project Object
 					let newProject: Project = {
 						name: ProjectName,
-						owner_id: user_id
+						owner_id: user_id,
+						shared_access: {}
 					}
 
 					// Push to Firestore

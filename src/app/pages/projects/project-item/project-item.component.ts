@@ -4,6 +4,7 @@ import { Project } from 'src/app/models/project.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProjectPopupModifyComponent } from '../project-popup-modify/project-popup-modify.component';
 import { Router } from '@angular/router';
+import { ProjectPopupAccessComponent } from '../project-popup-access/project-popup-access.component';
 
 @Component({
 	selector: 'project-item',
@@ -32,6 +33,15 @@ export class ProjectItemComponent implements OnInit {
 		if (user_id === this.projectItem.owner_id!) {
 			this.itemTag = "Owned";
 		}
+	}
+
+	onProjectAccessInvoked(): void {
+		this.dialog.open(ProjectPopupAccessComponent, {
+			disableClose: true,
+			data: {
+				projectObj: this.projectItem
+			}
+		})
 	}
 
 	onProjectEditInvoked(): void {

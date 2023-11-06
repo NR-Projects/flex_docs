@@ -1,0 +1,38 @@
+<h1 mat-dialog-title>Modify Project Access Control</h1>
+<div></div>
+<mat-dialog-content class="mat-typography dialog-content">
+    <!-- User Access Actions -->
+    <button mat-raised-button color="primary" (click)="addNewFormGroup()">Add User Access Item</button>
+
+    <br />
+
+    <!-- User Access List -->
+    <form [formGroup]="projectAccessInfoFormGroup">
+        <ng-container formArrayName="userAccessList">
+            <div *ngFor="let docCtrl of userAccessListControl.controls; let index = index" [formGroupName]="index" class="accessFormItem">
+                <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                    <mat-label>User Id</mat-label>
+                    <input matInput placeholder="User Id" formControlName="uid" required>
+                </mat-form-field>
+                <div></div> <!-- To resolve margin collapse -->
+                <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                    <mat-label>Access</mat-label>
+                    <mat-select formControlName="access" required>
+                        <mat-option value="READ-ONLY">READ-ONLY</mat-option>
+                        <mat-option value="READ-WRITE">READ-WRITE</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div></div> <!-- To resolve margin collapse -->
+                <button mat-mini-fab color="warn" (click)="removeFormGroup(index)">
+                    <mat-icon>remove</mat-icon>
+                </button>
+                <br />
+            </div>
+        </ng-container>
+    </form>
+</mat-dialog-content>
+<div></div>
+<mat-dialog-actions align="end">
+    <button mat-button color="accent" mat-dialog-close>Close</button>
+    <button mat-raised-button color="primary" (click)="onProjectActionInvoked()" [disabled]="!projectAccessInfoFormGroup.valid">Submit</button>
+</mat-dialog-actions>

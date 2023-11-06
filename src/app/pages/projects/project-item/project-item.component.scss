@@ -56,6 +56,14 @@
             margin: 0px 15px;
 
             &:nth-child(1) {
+                fill: #26ab33;
+
+                &:hover {
+                    fill: #2cd43d;
+                }
+            }
+
+            &:nth-child(2) {
                 fill: #406098;
 
                 &:hover {
@@ -63,7 +71,7 @@
                 }
             }
 
-            &:nth-child(2) {
+            &:nth-child(3) {
                 fill: #ba2424;
 
                 &:hover {

@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>{{ popupTitle }}</h1>
 <div></div>
 <mat-dialog-content class="mat-typography dialog-content">
-    <form [formGroup]="boardInfoFormGroup" readonly>
+    <form [formGroup]="boardInfoFormGroup">
         <mat-form-field appearance="outline">
             <mat-label>Board Name</mat-label>
             <input matInput placeholder="Board Name" formControlName="BoardName" required
