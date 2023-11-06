@@ -11,6 +11,11 @@
         <ng-container formArrayName="userAccessList">
             <div *ngFor="let docCtrl of userAccessListControl.controls; let index = index" [formGroupName]="index" class="accessFormItem">
                 <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                    <mat-label>User Tag</mat-label>
+                    <input matInput placeholder="User Tag" formControlName="tag" required>
+                </mat-form-field>
+                <div></div> <!-- To resolve margin collapse -->
+                <mat-form-field subscriptSizing="dynamic" appearance="outline">
                     <mat-label>User Id</mat-label>
                     <input matInput placeholder="User Id" formControlName="uid" required>
                 </mat-form-field>

@@ -11,7 +11,12 @@ export class Project {
     // Sharing Access [uid -> access_type]
     // * = Everyone
     // <uid> = UID of specific user
-    shared_access: Record<string, string> = {}
+    shared_access: Record<string, UserAccess> = {}
+}
+
+export interface UserAccess {
+    tag: string;
+    access_type: string;
 }
 
 export class Board {

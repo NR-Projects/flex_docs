@@ -63,7 +63,7 @@ export class ProjectViewComponent implements OnInit, OnDestroy {
 						disableClose: true,
 						data: {
 							isAllowed: true,
-							accessType: this.projectData?.shared_access[user_id]
+							accessType: this.projectData?.shared_access[user_id].access_type
 						},
 					});
 				}
