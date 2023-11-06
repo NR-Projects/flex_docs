@@ -15,6 +15,7 @@ import { Subscription } from 'rxjs';
 export class ProjectsComponent implements OnInit, OnDestroy {
 	userName: any;
 	userImage: any;
+	userId: any;
 
 	projectListSub?: Subscription;
 	projectList: Array<Project>
@@ -36,6 +37,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
 		// Setup Personal Properties
 		this.userName = user?.displayName;
 		this.userImage = user?.photoURL;
+		this.userId = user?.uid;
 		
 		// Fetch All projects
 		this.projectListSub = this.projectService.getAllProjects(user!.uid).subscribe({

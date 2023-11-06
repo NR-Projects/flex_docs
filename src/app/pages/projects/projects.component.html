@@ -1,7 +1,10 @@
 <div class="top-bar">
     <div>
         <img [src]="userImage" alt="" referrerpolicy="no-referrer">
-        <span>{{ userName }}</span>
+        <div>
+            <span>{{ userName }}</span>
+            <span>ID: {{ userId }}</span>
+        </div>
     </div>
     <div (click)="logOut()">
         <mat-icon>logout</mat-icon>

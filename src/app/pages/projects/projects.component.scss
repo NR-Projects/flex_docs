@@ -12,7 +12,7 @@
     align-items: center;
     justify-content: space-evenly;
 
-    div {
+    &>div {
         &:nth-child(1) {
             display: flex;
             align-items: center;
@@ -23,10 +23,24 @@
                 margin-right: 30px;
             }
 
-            &>span {
-                font-size: max(1.2rem, 15px);
-                color: #ffffff;
-                text-overflow: ellipsis;
+            &>div {
+                display: flex;
+                flex-direction: column;
+
+                &>span {
+                    &:nth-child(1) {
+                        font-size: max(1.2rem, 15px);
+                        color: #ffffff;
+                        text-overflow: ellipsis;
+                        margin: 3px 0px;
+                    }
+
+                    &:nth-child(2) {
+                        font-size: max(0.8rem, 11px);
+                        color: #28adf4;
+                        text-overflow: ellipsis;
+                    }
+                }
             }
         }
 
@@ -42,16 +56,16 @@
             outline-color: #e95757;
             outline-offset: 0px;
             box-shadow: 0 0 20px hsla(148, 74%, 59%, 0);
-        
+
             $element_color: #de5c5c;
             color: $element_color;
             fill: $element_color;
-        
-            svg {
+
+            &>svg {
                 height: max(1rem, 8px);
                 margin-right: 1rem;
             }
-        
+
             &:hover {
                 transition: all 0.5s ease-in-out;
                 background-color: #e34a4a;
@@ -59,7 +73,7 @@
                 outline-offset: 20px;
                 box-shadow: 0 0 20px #e95757;
                 cursor: pointer;
-        
+
                 $element_color: #dcdcdc;
                 color: $element_color;
                 fill: $element_color;
@@ -86,7 +100,7 @@
             border-radius: 7.5px;
             box-shadow: 0px 2px 2px 0.25px #000000b0;
             cursor: pointer;
-    
+
             &:hover {
                 transition: all 0.2s ease-in-out;
                 background-color: #383838;
