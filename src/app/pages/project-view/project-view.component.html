@@ -31,10 +31,28 @@
 
 <!-- Floating Action Button -->
 <div class="project-fab-collection">
-    <button mat-fab color="primary" (click)="onSyncAllBoardPos()">
+    <button
+        mat-fab
+        matTooltip="Manually refresh boards"
+        [matTooltipPosition]="'above'"
+        color="primary"
+        (click)="onReloadBoardsEvent()">
+        <mat-icon>refresh</mat-icon>
+    </button>
+    <button
+        mat-fab
+        matTooltip="Manually sync boards"
+        [matTooltipPosition]="'above'"
+        color="primary"
+        (click)="onSyncAllBoardPos()">
         <mat-icon>sync</mat-icon>
     </button>
-    <button mat-fab color="primary" (click)="onCreateBoardEvent()">
+    <button
+        mat-fab
+        matTooltip="Add new board"
+        [matTooltipPosition]="'above'"
+        color="primary"
+        (click)="onCreateBoardEvent()">
         <mat-icon>add</mat-icon>
     </button>
 </div>

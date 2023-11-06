@@ -57,7 +57,7 @@ const firebaseConfig = {
 		ProjectBoardComponent,
 		ProjectBoardPopupActionComponent,
 		ProjectPopupAccessComponent,
-  ProjectEnterPopupComponent,
+		ProjectEnterPopupComponent,
 	],
 	imports: [
 		BrowserModule,

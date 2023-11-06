@@ -18,6 +18,7 @@ import { ProjectEnterPopupComponent } from './project-enter-popup/project-enter-
 export class ProjectViewComponent implements OnInit, OnDestroy {
 
 	// Project and Board Info
+	projectId?: string;
 	projectTitle?: string;
 	projectData?: Project;
 	projectBoards: Array<Board>;
@@ -48,10 +49,10 @@ export class ProjectViewComponent implements OnInit, OnDestroy {
 		const user_id = await this.authService.getUserId();
 
 		// Get Id from Url
-		const projectId: string = this.activatedRoute.snapshot.paramMap.get('id')!;
+		this.projectId = this.activatedRoute.snapshot.paramMap.get('id')!;
 
 		// Get Project Info (From Id)
-		this.projectSub = this.projectService.getProject(projectId).subscribe({
+		this.projectSub = this.projectService.getProject(this.projectId!).subscribe({
 			next: (project: Project) => {
 				this.projectData = project;
 				this.projectTitle = this.projectData.name!;
@@ -80,32 +81,7 @@ export class ProjectViewComponent implements OnInit, OnDestroy {
 		});
 
 		// Get Project Board (From Id + Project Id)
-		this.projectBoardsSub = this.projectBoardService.getAllProjectBoards(projectId).subscribe({
-			next: (value: Array<Board>) => {
-				// Reset Arrays
-				this.projectBoards = [];
-				this.layout = [];
-
-				value.forEach((board: Board) => {
-					// Push to Board Array
-					board._is_pos_changed = false;
-					this.projectBoards.push(board);
-
-					// Push to Layout
-					const item: KtdGridLayoutItem = {
-						id: board.id,
-						x: board.pos.x, y: board.pos.y,
-						w: board.size.x, h: board.size.y,
-						minW: board.min_size.x, minH: board.min_size.y
-					};
-					this.layout = [
-						item,
-						...this.layout
-					];
-				});
-			},
-			error: (err: any) => console.error(err)
-		});
+		this._refreshBoardAction();
 	}
 
 	ngOnDestroy(): void {
@@ -168,6 +144,44 @@ export class ProjectViewComponent implements OnInit, OnDestroy {
 			if (projectBoard._is_pos_changed) {
 				await this.projectBoardService.updateProjectBoard(this.projectData!.id!, projectBoard);
 			}
+		});
+
+		alert("Boards successfully synced to server!");
+	}
+
+	onReloadBoardsEvent(): void {
+		this._refreshBoardAction();
+		alert("Boards are already refreshed!");
+	}
+
+
+	_refreshBoardAction(): void {
+		this.projectBoardsSub?.unsubscribe();
+		this.projectBoardsSub = this.projectBoardService.getAllProjectBoards(this.projectId!).subscribe({
+			next: (value: Array<Board>) => {
+				// Reset Arrays
+				this.projectBoards = [];
+				this.layout = [];
+
+				value.forEach((board: Board) => {
+					// Push to Board Array
+					board._is_pos_changed = false;
+					this.projectBoards.push(board);
+
+					// Push to Layout
+					const item: KtdGridLayoutItem = {
+						id: board.id,
+						x: board.pos.x, y: board.pos.y,
+						w: board.size.x, h: board.size.y,
+						minW: board.min_size.x, minH: board.min_size.y
+					};
+					this.layout = [
+						item,
+						...this.layout
+					];
+				});
+			},
+			error: (err: any) => console.error(err)
 		});
 	}
 }
