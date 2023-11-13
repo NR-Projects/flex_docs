@@ -1,5 +1,5 @@
 # FlexDocs
-[![Netlify Status](https://api.netlify.com/api/v1/badges/4c47203d-3ef8-4ec7-999f-dc110e1d63cf/deploy-status)](https://app.netlify.com/sites/flex-docs/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4c47203d-3ef8-4ec7-999f-dc110e1d63cf/deploy-status)](https://app.netlify.com/sites/ts-flex-docs/deploys)
 
 Visit site on ✨ https://ts-flex-docs.netlify.app/ ✨
 
