@@ -3,7 +3,8 @@ import { Board } from 'src/app/models/project.model';
 import { ProjectBoardPopupActionComponent } from '../project-board-popup-action/project-board-popup-action.component';
 import { MatDialog } from '@angular/material/dialog';
 
-import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
+import { DomSanitizer } from "@angular/platform-browser";
+import { BoardService } from 'src/app/services/board.service';
 
 
 @Component({
@@ -16,7 +17,11 @@ export class ProjectBoardComponent implements OnInit, OnChanges {
 	@Input({ required: true }) projectId!: string;
 	@Input({ required: true }) boardItem!: Board;
 
+	// For "Static" Only
+	show_board_update_ui: boolean = false;
+
 	constructor(
+		private projectBoardService: BoardService,
 		public sanitizer: DomSanitizer,
 		private dialog: MatDialog
 	) { }
@@ -63,5 +68,23 @@ export class ProjectBoardComponent implements OnInit, OnChanges {
 		else {
 			this.content_or_link = this.boardItem.boardContent;
 		}
+	}
+
+	// For "Static" Only
+	onContentUpdated(newBoardContent: string): void {
+		if (this.boardItem.boardContent === newBoardContent) {
+			this.show_board_update_ui = false;
+		}
+		else {
+			// Show UI for Updating Board Content
+			this.show_board_update_ui = true;
+		}
+	}
+
+	async onImmediateBoardUpdate(): Promise<void> {
+		this.boardItem.boardContent = this.content_or_link;
+		await this.projectBoardService.updateProjectBoard(this.projectId, this.boardItem);
+		this.show_board_update_ui = false;
+		alert(`Contents are updated! -> Board: ${this.boardItem.name}`);
 	}
 }
