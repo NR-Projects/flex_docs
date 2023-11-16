@@ -18,11 +18,16 @@
 </div>
 
 <!-- Board Content -->
-<div class="board-content" [ngSwitch]="boardItem.boardType">
-    <textarea class="content-frame" *ngSwitchCase="'STATIC'" readonly>{{ content_or_link }}</textarea>
-    <iframe
-        class="content-frame"
-        sandbox="allow-forms allow-modals allow-scripts allow-pointer-lock allow-popups allow-same-origin allow-top-navigation"
-        [src]="content_or_link"
-        *ngSwitchCase="'LINKED'" ></iframe>
+<div class="board-content" (mousedown)="noPropagationClick($event)">
+    <div class="content-frame" [ngSwitch]="boardItem.boardType">
+        <ng-container *ngSwitchCase="'STATIC'">
+            <textarea>{{ content_or_link }}</textarea>
+        </ng-container>
+        <ng-container *ngSwitchCase="'LINKED'">
+            <iframe
+                sandbox="allow-forms allow-modals allow-scripts allow-pointer-lock allow-popups allow-same-origin allow-top-navigation"
+                [src]="content_or_link"></iframe>
+        </ng-container>
+        
+    </div>
 </div>

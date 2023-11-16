@@ -51,6 +51,11 @@ export class ProjectBoardComponent implements OnInit, OnChanges {
 		});
 	}
 
+	noPropagationClick(evt: Event): void {
+		evt.stopPropagation();
+		evt.stopImmediatePropagation();
+	}
+
 	_setBoardDisplay(): void {
 		if (this.boardItem.boardType === "LINKED") {
 			this.content_or_link = this.sanitizer.bypassSecurityTrustResourceUrl(this.boardItem.boardContent);
