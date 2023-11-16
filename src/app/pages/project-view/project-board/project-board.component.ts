@@ -19,6 +19,7 @@ export class ProjectBoardComponent implements OnInit, OnChanges {
 
 	// For "Static" Only
 	show_board_update_ui: boolean = false;
+	updated_content: string = "";
 
 	constructor(
 		private projectBoardService: BoardService,
@@ -78,11 +79,12 @@ export class ProjectBoardComponent implements OnInit, OnChanges {
 		else {
 			// Show UI for Updating Board Content
 			this.show_board_update_ui = true;
+			this.updated_content = newBoardContent;
 		}
 	}
 
 	async onImmediateBoardUpdate(): Promise<void> {
-		this.boardItem.boardContent = this.content_or_link;
+		this.boardItem.boardContent = this.updated_content;
 		await this.projectBoardService.updateProjectBoard(this.projectId, this.boardItem);
 		this.show_board_update_ui = false;
 		alert(`Contents are updated! -> Board: ${this.boardItem.name}`);
