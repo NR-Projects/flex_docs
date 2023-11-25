@@ -33,6 +33,9 @@ export class ProjectViewComponent implements OnInit, OnDestroy {
 	layout: KtdGridLayout = [];
 	trackById = ktdTrackById;
 
+	// Keep track of maximum height
+	maxHeight: number = 0;
+
 	constructor(
 		private activatedRoute: ActivatedRoute,
 		private router: Router,
@@ -127,7 +130,8 @@ export class ProjectViewComponent implements OnInit, OnDestroy {
 			disableClose: true,
 			data: {
 				type: "Add",
-				projectId: this.projectData?.id
+				projectId: this.projectData?.id,
+				maxHeight: this.maxHeight
 			},
 		});
 	}
@@ -167,6 +171,12 @@ export class ProjectViewComponent implements OnInit, OnDestroy {
 					// Push to Board Array
 					board._is_pos_changed = false;
 					this.projectBoards.push(board);
+
+					// Calculate for maximum height/depth
+					let tmp_max_val = board.pos.y + board.size.y;
+					if (this.maxHeight < tmp_max_val) {
+						this.maxHeight = tmp_max_val;
+					}
 
 					// Push to Layout
 					const item: KtdGridLayoutItem = {

@@ -17,6 +17,9 @@ export class ProjectBoardPopupActionComponent implements OnInit {
 	popupData: Board;
 	popupFormEnabled: boolean;
 
+	// For Board Creation
+	popupMaxHeight: number;
+
 	popupTitle?: string;
 	boardInfoFormGroup = this.formBuilder.group({
 		BoardName: ['', Validators.required],
@@ -34,6 +37,7 @@ export class ProjectBoardPopupActionComponent implements OnInit {
 		this.popupProjectId = data.projectId;
 		this.popupData = data.boardData;
 		this.popupFormEnabled = true;
+		this.popupMaxHeight = data.maxHeight;
 	}
 
 	ngOnInit(): void {
@@ -86,6 +90,9 @@ export class ProjectBoardPopupActionComponent implements OnInit {
 						BoardType,
 						BoardContent
 					);
+
+					// Apply maxHeight (so that it will not disturb other boards positioning)
+					newBoard.pos.y = this.popupMaxHeight;
 
 					// Push to Firestore
 					await this.projectBoardService.addProjectBoard(this.popupProjectId, newBoard);
