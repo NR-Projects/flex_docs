@@ -9,9 +9,14 @@ export class Project {
     owner_id: string = '';
 
     // Sharing Access [uid -> access_type]
-    // * = Everyone
     // <uid> = UID of specific user
-    shared_access: Record<string, UserAccess> = {}
+    shared_access: Record<string, UserAccess> = {};
+
+    // Allow for public sharing
+    // NONE for not public
+    // READ for allowing public read-only
+    // WRITE for allowing public read-write
+    is_public: string = 'NONE';
 }
 
 export interface UserAccess {

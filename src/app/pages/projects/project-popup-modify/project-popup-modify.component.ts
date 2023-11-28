@@ -81,7 +81,8 @@ export class ProjectPopupModifyComponent implements OnInit {
 					let newProject: Project = {
 						name: ProjectName,
 						owner_id: user_id,
-						shared_access: {}
+						shared_access: {},
+						is_public : 'NONE'
 					}
 
 					// Push to Firestore

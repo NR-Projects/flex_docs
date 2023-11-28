@@ -1,15 +1,29 @@
 <h1 mat-dialog-title>Modify Project Access Control</h1>
 <div></div>
 <mat-dialog-content class="mat-typography dialog-content">
-    <!-- User Access Actions -->
-    <button mat-raised-button color="primary" (click)="addNewFormGroup()">Add User Access Item</button>
-
+    <!-- Public User Access Control -->
+    <form [formGroup]="projectPublicUserAccessFormGroup">
+        <mat-form-field subscriptSizing="dynamic" appearance="outline">
+            <mat-label>Public Access</mat-label>
+            <mat-select formControlName="publicAccess" required>
+                <mat-option value="NONE">NONE</mat-option>
+                <mat-option value="READ">READ</mat-option>
+                <mat-option value="WRITE">WRITE</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
     <br />
 
+    <!-- Custom User Access Control -->
+
+    <!-- User Access Actions -->
+    <button mat-raised-button color="primary" (click)="addNewFormGroup()">Add User Access Item</button>
+    <br />
     <!-- User Access List -->
-    <form [formGroup]="projectAccessInfoFormGroup">
+    <form [formGroup]="projectAuthUserAccessInfoFormGroup">
         <ng-container formArrayName="userAccessList">
-            <div *ngFor="let docCtrl of userAccessListControl.controls; let index = index" [formGroupName]="index" class="accessFormItem">
+            <div *ngFor="let docCtrl of userAccessListControl.controls; let index = index" [formGroupName]="index"
+                class="accessFormItem">
                 <mat-form-field subscriptSizing="dynamic" appearance="outline">
                     <mat-label>User Tag</mat-label>
                     <input matInput placeholder="User Tag" formControlName="tag" required>
@@ -39,5 +53,6 @@
 <div></div>
 <mat-dialog-actions align="end">
     <button mat-button color="accent" mat-dialog-close>Close</button>
-    <button mat-raised-button color="primary" (click)="onProjectActionInvoked()" [disabled]="!projectAccessInfoFormGroup.valid">Submit</button>
+    <button mat-raised-button color="primary" (click)="onProjectActionInvoked()"
+        [disabled]="!projectAuthUserAccessInfoFormGroup.valid || !projectPublicUserAccessFormGroup.valid">Submit</button>
 </mat-dialog-actions>

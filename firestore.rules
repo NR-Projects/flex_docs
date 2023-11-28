@@ -20,16 +20,26 @@ service cloud.firestore {
         function isUserAuthorized(resc, array) {
           return isSignedIn() && (getUserAccess(resc) in array);
         }
+        
+        function rescPublicStatus(resc, array) {
+        	return (resc.data.is_public in array);
+        }
 
         
         allow create: if isSignedIn();
         allow read: if isOwner(resource) ||
                         isUserAuthorized(resource,
                         	['READ-ONLY', 'READ-WRITE']
+                        ) ||
+                        rescPublicStatus(resource,
+                        	['READ', 'WRITE']
                         );
         allow update, delete: if isOwner(resource) ||
                           isUserAuthorized(resource,
                             ['READ-WRITE']
+                          ) ||
+                          rescPublicStatus(resource,
+                            ['WRITE']
                           );
         
         // Check for boards
@@ -41,6 +51,10 @@ service cloud.firestore {
             	 isUserAuthorized(
                			get(/databases/$(database)/documents/projects/$(project)),
                     ['READ-ONLY', 'READ-WRITE']
+                  ) ||
+               rescPublicStatus(
+               			get(/databases/$(database)/documents/projects/$(project)),
+                    ['READ', 'WRITE']
                   );
         	allow create, update, delete:
           	if isOwner(
@@ -49,9 +63,13 @@ service cloud.firestore {
             	 isUserAuthorized(
                			get(/databases/$(database)/documents/projects/$(project)),
                     ['READ-WRITE']
+                  ) ||
+               rescPublicStatus(
+               			get(/databases/$(database)/documents/projects/$(project)),
+                    ['WRITE']
                   );
         }
-	  }
+			}
     }
   }
 }

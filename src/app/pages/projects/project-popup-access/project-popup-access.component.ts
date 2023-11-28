@@ -14,12 +14,18 @@ export class ProjectPopupAccessComponent implements OnInit {
 	popupProject: Project;
 	popupTitle?: string;
 
-	projectAccessInfoFormGroup = this.formBuilder.group({
+	// Public UAC
+	projectPublicUserAccessFormGroup = this.formBuilder.group({
+		publicAccess: ['', Validators.required]
+	})
+
+	// Authenticated UAC
+	projectAuthUserAccessInfoFormGroup = this.formBuilder.group({
 		userAccessList: this.formBuilder.array([])
 	});
 
 	get userAccessListControl(): FormArray {
-		return this.projectAccessInfoFormGroup.get("userAccessList") as FormArray;
+		return this.projectAuthUserAccessInfoFormGroup.get("userAccessList") as FormArray;
 	}
 
 	constructor(
@@ -31,7 +37,14 @@ export class ProjectPopupAccessComponent implements OnInit {
 		this.popupProject = data.projectObj;
 	}
 
-	async ngOnInit(): Promise<void> {
+	ngOnInit(): void {
+		// Public UAC
+		// Get Public Access Info
+		this.projectPublicUserAccessFormGroup.setValue( {
+			publicAccess: this.popupProject.is_public,
+		})
+
+		// Authenticated UAC
 		// Get Shared Access and display
 		for (const [key, value] of Object.entries(this.popupProject.shared_access)) {
 			const uid = key as string;
@@ -46,7 +59,7 @@ export class ProjectPopupAccessComponent implements OnInit {
 		}
 	}
 
-	addNewFormGroup() {
+	addNewFormGroup(): void {
 		this.userAccessListControl.push(
 			this.formBuilder.group({
 				tag: [null, [Validators.required]],
@@ -56,12 +69,17 @@ export class ProjectPopupAccessComponent implements OnInit {
 		);
 	}
 
-	removeFormGroup(index: number) {
+	removeFormGroup(index: number): void {
 		this.userAccessListControl.removeAt(index);
 	}
 
-
 	async onProjectActionInvoked(): Promise<void> {
+		// Public UAC
+		let is_public = this.projectPublicUserAccessFormGroup.get('publicAccess')?.value!;
+
+		this.popupProject.is_public = is_public;
+
+		// Authenticated UAC
 		let access_record: Record<string, UserAccess> = {};
 
 		for (let fc of this.userAccessListControl.controls) {
