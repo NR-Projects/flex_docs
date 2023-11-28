@@ -16,6 +16,8 @@ import { ProjectEnterPopupComponent } from './project-enter-popup/project-enter-
 	styleUrls: ['./project-view.component.scss']
 })
 export class ProjectViewComponent implements OnInit, OnDestroy {
+	// User Check
+	isUserNonExistent: boolean = false;
 
 	// Project and Board Info
 	projectId?: string;
@@ -50,6 +52,10 @@ export class ProjectViewComponent implements OnInit, OnDestroy {
 
 	async ngOnInit(): Promise<void> {
 		const user_id = await this.authService.getUserId();
+
+		if (user_id === '') {
+			this.isUserNonExistent = true;
+		}
 
 		// Get Id from Url
 		this.projectId = this.activatedRoute.snapshot.paramMap.get('id')!;

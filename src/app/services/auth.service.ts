@@ -28,7 +28,6 @@ export class AuthService {
 		await this.firebaseAuth.authStateReady();
 		let currentUser = this.firebaseAuth.currentUser;
 		if (currentUser === null) {
-			alert("Please Reload!!");
 			return '';
 		}
 		return currentUser.uid;

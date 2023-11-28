@@ -1,6 +1,6 @@
 <!-- Top Bar -->
 <div class="top-bar">
-    <div class="back-btn" (click)="backToProjects()">
+    <div class="back-btn" *ngIf="!isUserNonExistent" (click)="backToProjects()">
         <svg xmlns="http://www.w3.org/2000/svg" height="1em"
             viewBox="0 0 512 512">
             <path
